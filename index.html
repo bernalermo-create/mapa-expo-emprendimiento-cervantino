@@ -89,6 +89,8 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .marker.service{width:8.4%;height:5.6%;font-size:clamp(9.5px,1.6cqw,16px);background:linear-gradient(180deg,#ffd7ae 0%,#ffd7ae 46%,#ffc48a 46%,#ffc48a 100%);border-color:var(--orange-dark);color:#2b1200}
 .marker.compact{width:3.4%;height:3.1%;font-size:clamp(8.5px,1.3cqw,11px)}
 .marker.building{width:3.6%;height:4.8%;border-radius:999px;background:var(--navy);color:#fff;font-size:clamp(7px,1.25cqw,13px)}
+.marker.building.landmark{background:#fff;border:2px solid var(--orange);width:4.6%;height:6.1%;font-size:clamp(13px,2.4cqw,22px)}
+.marker.building.landmark:hover,.marker.building.landmark.active{background:var(--orange-soft)}
 .marker.plain{width:max-content;max-width:155px;height:auto;background:none;border:none;box-shadow:none;padding:2px 5px;color:var(--navy-2);font-family:var(--font-display);font-weight:700;white-space:normal;text-align:center;line-height:1.15;font-size:clamp(9px,1.2cqw,11px);letter-spacing:.2px}
 .marker.plain.vertical{width:max-content;max-width:90px;transform:translate(-50%,-50%) rotate(-90deg)}
 .marker.plain:hover,.marker.plain.active{background:rgba(39,199,232,.15);border-radius:8px;box-shadow:none;color:var(--cyan-dark)}
@@ -277,7 +279,8 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
       <span><i style="background:#ff8a3d"></i> Servicios / manufactura</span>
       <span><i style="background:#8b5cf6"></i> Entretenimiento</span>
       <span><i style="background:#d99a4e"></i> Pasillo Comedor Escolar</span>
-      <span><i style="background:#07152d"></i> Espacios del colegio</span>
+      <span><i style="background:#07152d"></i> 📍 Puntos Expo</span>
+      <span><i style="background:#fff;border:1.5px solid var(--orange)"></i> Otros lugares (40 años)</span>
     </div></div>
   </aside>
 </main>
@@ -330,9 +333,9 @@ const DATA={"stands":[
 {"id":"1","name":"Auditorio","x":79.10,"y":40.04,"zone":"Zona de Alimentos","desc":"📍 Punto 1 de 3 de la Expo Emprendimiento 2026. Aquí se ubican los 26 stands de alimentos, alrededor del Auditorio.","expo":true},
 {"id":"2","name":"Patio Secretaría Académica","x":51.8,"y":59.1,"zone":"Servicios, Manufactura y Entretenimiento","desc":"📍 Punto 2 de 3 de la Expo Emprendimiento 2026. Patio frente a las Aulas C107 y C108, con los stands de Servicios, Manufactura y Entretenimiento.","expo":true},
 {"id":"3","name":"Pasillo Comedor Escolar","x":54.0,"y":50.0,"zone":"Pasillo hacia el comedor escolar","desc":"📍 Punto 3 de 3 de la Expo Emprendimiento 2026. Frente al Depósito de Educación Física. Ubicación exclusiva del stand de Kong Dance.","expo":true},
-{"id":"4","name":"Huerta Escolar","x":92.8,"y":43.9,"zone":"Zona verde","desc":"Huerta escolar, parte de las actividades de los 40 años cervantinos."},
-{"id":"5","name":"Aula 107","x":60.0,"y":63.5,"zone":"Bloque Bachillerato","desc":"Ventana Aula 107: entrega de pastel, actividad de los 40 años cervantinos."},
-{"id":"6","name":"Secretaría · Bloque Administrativo","x":39.1,"y":68.4,"zone":"Administración · TEINCO","desc":"Bloque Administrativo, oficina de Secretaría."}
+{"id":"4","name":"Huerta Escolar","x":92.8,"y":43.9,"zone":"Zona verde","desc":"Huerta escolar, parte de las actividades de los 40 años cervantinos.","icon":"🌱"},
+{"id":"5","name":"Aula 107","x":60.0,"y":63.5,"zone":"Bloque Bachillerato","desc":"Ventana Aula 107: entrega de pastel, actividad de los 40 años cervantinos.","icon":"🧁"},
+{"id":"6","name":"Secretaría · Bloque Administrativo","x":39.1,"y":68.4,"zone":"Administración · TEINCO","desc":"Bloque Administrativo, oficina de Secretaría.","icon":"🏢"}
 ]};
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -348,9 +351,9 @@ function renderMarkers(){
   const box=$("#markers");box.innerHTML="";
   itemsForView().forEach(item=>{
     const b=document.createElement("button"),isBuild=view==="general";
-    b.className="marker "+(isBuild?"building":item.plain?("plain"+(item.vertical?" vertical":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
-    b.style.left=item.x+"%";b.style.top=item.y+"%";b.textContent=isBuild?("📍"+item.id):(item.plain?(item.name||item.id):item.id);b.title=isBuild?("Punto Expo "+item.id+": "+item.name):(item.name||item.id);b.dataset.id=item.id;
-    b.setAttribute("aria-label",(isBuild?("Punto Expo "+item.id+": "+item.name):"Stand "+item.id));
+    b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")):item.plain?("plain"+(item.vertical?" vertical":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
+    b.style.left=item.x+"%";b.style.top=item.y+"%";b.textContent=isBuild?(item.expo?("📍"+item.id):item.icon):(item.plain?(item.name||item.id):item.id);b.title=isBuild?((item.expo?("Punto Expo "+item.id+": "):"")+item.name):(item.name||item.id);b.dataset.id=item.id;
+    b.setAttribute("aria-label",(isBuild?((item.expo?("Punto Expo "+item.id+": "):"")+item.name):"Stand "+item.id));
     b.addEventListener("click",e=>{e.stopPropagation();selectItem(item)});
     if(selected&&selected.id===item.id)b.classList.add("active");
     box.appendChild(b);
