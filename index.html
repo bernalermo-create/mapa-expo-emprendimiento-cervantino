@@ -91,7 +91,6 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .marker.building{width:3.6%;height:4.8%;border-radius:999px;background:var(--navy);color:#fff;font-size:clamp(7px,1.25cqw,13px)}
 .marker.building.landmark{background:#fff;border:2px solid var(--orange);width:4.6%;height:6.1%;font-size:clamp(13px,2.4cqw,22px)}
 .marker.building.landmark:hover,.marker.building.landmark.active{background:var(--orange-soft)}
-.roomFix{position:absolute;transform:translate(-50%,-50%);width:6.6%;height:4%;background:#1f6ea5;color:#fff;font-weight:700;font-family:var(--font-display);text-align:center;line-height:1.05;font-size:clamp(6px,1cqw,10.5px);display:flex;align-items:center;justify-content:center;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.25) inset;pointer-events:none;white-space:pre-line}
 .marker.plain{width:max-content;max-width:155px;height:auto;background:none;border:none;box-shadow:none;padding:2px 5px;color:var(--navy-2);font-family:var(--font-display);font-weight:700;white-space:normal;text-align:center;line-height:1.15;font-size:clamp(9px,1.2cqw,11px);letter-spacing:.2px}
 .marker.plain.vertical{width:max-content;max-width:90px;transform:translate(-50%,-50%) rotate(-90deg)}
 .marker.plain:hover,.marker.plain.active{background:rgba(39,199,232,.15);border-radius:8px;box-shadow:none;color:var(--cyan-dark)}
@@ -348,16 +347,8 @@ let view="general",filter="all",selected=null,scale=1,panX=0,panY=0,dragging=fal
 function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove("show"),2200)}
 function itemsForView(){return view==="general"?DATA.buildings:DATA.stands.filter(x=>filter==="all"||x.category===filter)}
 
-const ROOM_FIXES=[{x:73.5,y:74.8,text:"AULA\nC 104"},{x:85.2,y:66.8,text:"AULA\nC 102"}];
 function renderMarkers(){
   const box=$("#markers");box.innerHTML="";
-  if(view==="general"){
-    ROOM_FIXES.forEach(fix=>{
-      const d=document.createElement("div");
-      d.className="roomFix";d.style.left=fix.x+"%";d.style.top=fix.y+"%";d.textContent=fix.text;
-      box.appendChild(d);
-    });
-  }
   itemsForView().forEach(item=>{
     const b=document.createElement("button"),isBuild=view==="general";
     b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")):item.plain?("plain"+(item.vertical?" vertical":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
