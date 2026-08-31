@@ -13,6 +13,7 @@
   --navy:#07152d; --navy-2:#123059; --cyan:#27c7e8; --cyan-dark:#05647a;
   --green:#1f9d63; --green-dark:#136a44; --green-soft:#e5f6ec;
   --orange:#ff8a3d; --orange-dark:#b8541b; --orange-soft:#fff1e4;
+  --violet:#8a5cf6; --violet-soft:#efe8fe;
   --court:#c9a866; --court-soft:#f4ecd6;
   --ink:#141d2e; --muted:#647089; --line:#e4e9f1; --paper:#ffffff;
   --shadow:0 18px 50px rgba(7,21,45,.14); --shadow-sm:0 6px 18px rgba(7,21,45,.08);
@@ -88,9 +89,19 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .standName{position:absolute;transform:translate(-50%,0);font-size:clamp(3.5px,0.62cqw,5.5px);line-height:1;font-weight:700;color:var(--green-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:6.2cqw;text-align:center;pointer-events:none;z-index:2}
 .marker.service{width:8.4%;height:5.6%;font-size:clamp(9.5px,1.6cqw,16px);background:linear-gradient(180deg,#ffd7ae 0%,#ffd7ae 46%,#ffc48a 46%,#ffc48a 100%);border-color:var(--orange-dark);color:#2b1200}
 .marker.compact{width:3.4%;height:3.1%;font-size:clamp(8.5px,1.3cqw,11px)}
-.marker.building{width:3.6%;height:4.8%;border-radius:999px;background:var(--navy);color:#fff;font-size:clamp(7px,1.25cqw,13px)}
-.marker.building.landmark{background:#fff;border:2px solid var(--orange);width:4.6%;height:6.1%;font-size:clamp(13px,2.4cqw,22px)}
-.marker.building.landmark:hover,.marker.building.landmark.active{background:var(--orange-soft)}
+.marker.building{width:max-content;max-width:46cqw;height:auto;background:none;border:none;box-shadow:none;border-radius:0;padding:0;display:flex;align-items:center;gap:.45em;transition:transform .15s}
+.marker.building:hover,.marker.building.active{transform:translate(-50%,-50%) scale(1.06)}
+.mchip{width:1.85em;height:1.85em;min-width:1.85em;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(7,21,45,.35),0 0 0 2px #fff;flex:none}
+.mchip svg{width:66%;height:66%;display:block}
+.mchip.expo{background:var(--navy)}
+.mchip.expo span{font-family:var(--font-display);font-weight:800;color:#fff;font-size:.95em;line-height:1}
+.mchip.huerta{background:var(--green-soft)}
+.mchip.pastel{background:#ffe1ee}
+.mchip.secretaria{background:#dbe9fb}
+.mchip.banderas{background:var(--violet-soft)}
+.mlabel{background:rgba(255,255,255,.94);color:var(--navy);font-family:var(--font-display);font-weight:700;padding:.28em .6em;border-radius:7px;box-shadow:0 2px 6px rgba(7,21,45,.16);font-size:clamp(7px,1.15cqw,12.5px);line-height:1.15;white-space:normal}
+.marker.building.expo .mlabel{color:var(--navy)}
+.marker.building:hover .mlabel,.marker.building.active .mlabel{background:#fff;box-shadow:0 3px 10px rgba(7,21,45,.28)}
 .marker.plain{width:max-content;max-width:155px;height:auto;background:none;border:none;box-shadow:none;padding:2px 5px;color:var(--navy-2);font-family:var(--font-display);font-weight:700;white-space:normal;text-align:center;line-height:1.15;font-size:clamp(9px,1.2cqw,11px);letter-spacing:.2px}
 .marker.plain.vertical{width:max-content;max-width:90px;transform:translate(-50%,-50%) rotate(-90deg)}
 .marker.plain:hover,.marker.plain.active{background:rgba(39,199,232,.15);border-radius:8px;box-shadow:none;color:var(--cyan-dark)}
@@ -333,9 +344,9 @@ const DATA={"stands":[
 {"id":"1","name":"Auditorio","x":79.10,"y":40.04,"zone":"Zona de Alimentos","desc":"📍 Punto 1 de 3 de la Expo Emprendimiento 2026. Aquí se ubican los 26 stands de alimentos, alrededor del Auditorio.","expo":true},
 {"id":"2","name":"Patio Secretaría Académica","x":51.8,"y":59.1,"zone":"Servicios, Manufactura y Entretenimiento","desc":"📍 Punto 2 de 3 de la Expo Emprendimiento 2026. Patio frente a las Aulas C107 y C108, con los stands de Servicios, Manufactura y Entretenimiento.","expo":true},
 {"id":"3","name":"Pasillo Comedor Escolar","x":54.0,"y":50.0,"zone":"Pasillo hacia el comedor escolar","desc":"📍 Punto 3 de 3 de la Expo Emprendimiento 2026. Frente al Depósito de Educación Física. Ubicación exclusiva del stand de Kong Dance.","expo":true},
-{"id":"4","name":"Huerta Escolar","x":92.8,"y":43.9,"zone":"Zona verde","desc":"Huerta escolar, parte de las actividades de los 40 años cervantinos.","icon":"🌱"},
-{"id":"5","name":"Aula 107","x":60.0,"y":63.5,"zone":"Bloque Bachillerato","desc":"Ventana Aula 107: entrega de pastel, actividad de los 40 años cervantinos.","icon":"🧁"},
-{"id":"6","name":"Secretaría · Bloque Administrativo","x":39.1,"y":68.4,"zone":"Administración · TEINCO","desc":"Bloque Administrativo, oficina de Secretaría.","icon":"🏢"},{"id":"7","name":"Develación de Estatua y Banderas","x":31.2,"y":36.5,"zone":"Bloque A · Frente al Aula 102","desc":"Develación de la estatua y las banderas, actividad conmemorativa de los 40 años cervantinos, frente al Aula 102 en el Bloque A.","icon":"🏛️"}
+{"id":"4","name":"Huerta Escolar","x":92.8,"y":43.9,"zone":"Zona verde","desc":"Huerta escolar, parte de las actividades de los 40 años cervantinos.","type":"huerta"},
+{"id":"5","name":"Aula 107","x":60.0,"y":63.5,"zone":"Bloque Bachillerato","desc":"Ventana Aula 107: entrega de pastel, actividad de los 40 años cervantinos.","type":"pastel"},
+{"id":"6","name":"Secretaría · Bloque Administrativo","x":39.1,"y":68.4,"zone":"Administración · TEINCO","desc":"Bloque Administrativo, oficina de Secretaría.","type":"secretaria"},{"id":"7","name":"Develación de Estatua y Banderas","x":41.5,"y":21.0,"zone":"Bloque A · Jardín junto al punto PE","desc":"Develación de la estatua y las banderas, actividad conmemorativa de los 40 años cervantinos, en el jardín semicircular frente al Bloque A (Aula 102), junto al punto de encuentro PE.","type":"banderas"}
 ]};
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -347,12 +358,26 @@ let view="general",filter="all",selected=null,scale=1,panX=0,panY=0,dragging=fal
 function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove("show"),2200)}
 function itemsForView(){return view==="general"?DATA.buildings:DATA.stands.filter(x=>filter==="all"||x.category===filter)}
 
+const ICONS={
+  huerta:'<svg viewBox="0 0 24 24"><rect x="5" y="16" width="14" height="5" rx="1.3" fill="#a9784f"/><path d="M12 20v-7" stroke="#136a44" stroke-width="1.8" stroke-linecap="round"/><path d="M12 13c-3.2 0-5.2-2.1-5.2-5.3 3.2 0 5.2 2.1 5.2 5.3z" fill="#1f9d63"/><path d="M12 13c3.2 0 5.2-2.1 5.2-5.3-3.2 0-5.2 2.1-5.2 5.3z" fill="#3fc98a"/></svg>',
+  pastel:'<svg viewBox="0 0 24 24"><path d="M7 11h10l-1.3 8.1a2 2 0 0 1-2 1.7h-3.4a2 2 0 0 1-2-1.7L7 11z" fill="#e8b98a"/><path d="M5.8 12.2c0-3.6 2.8-6.2 6.2-6.2s6.2 2.6 6.2 6.2H5.8z" fill="#ff9fc2"/><circle cx="12" cy="4.6" r="1.3" fill="#ff5c8a"/></svg>',
+  secretaria:'<svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="1.4" fill="#123059"/><rect x="6.6" y="6.3" width="2.6" height="2.6" fill="#dbe9fb"/><rect x="14.8" y="6.3" width="2.6" height="2.6" fill="#dbe9fb"/><rect x="6.6" y="11.2" width="2.6" height="2.6" fill="#dbe9fb"/><rect x="14.8" y="11.2" width="2.6" height="2.6" fill="#dbe9fb"/><rect x="10.2" y="16.1" width="3.6" height="4.4" fill="#dbe9fb"/></svg>',
+  banderas:'<svg viewBox="0 0 34 24"><line x1="6" y1="1.5" x2="6" y2="22" stroke="#123059" stroke-width="1.6" stroke-linecap="round"/><path d="M6 2.5 14 6 6 9.5z" fill="#3aa0ff"/><line x1="17" y1="0.5" x2="17" y2="22" stroke="#123059" stroke-width="1.6" stroke-linecap="round"/><path d="M17 1.5 25.5 5.3 17 9z" fill="#8a5cf6"/><line x1="27.5" y1="4" x2="27.5" y2="22" stroke="#123059" stroke-width="1.6" stroke-linecap="round"/><path d="M27.5 5 33.5 7.8 27.5 10.6z" fill="#ff8a3d"/></svg>'
+};
 function renderMarkers(){
   const box=$("#markers");box.innerHTML="";
   itemsForView().forEach(item=>{
     const b=document.createElement("button"),isBuild=view==="general";
     b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")):item.plain?("plain"+(item.vertical?" vertical":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
-    b.style.left=item.x+"%";b.style.top=item.y+"%";b.textContent=isBuild?(item.expo?("📍"+item.id):item.icon):(item.plain?(item.name||item.id):item.id);b.title=isBuild?((item.expo?("Punto Expo "+item.id+": "):"")+item.name):(item.name||item.id);b.dataset.id=item.id;
+    b.style.left=item.x+"%";b.style.top=item.y+"%";
+    if(isBuild){
+      const chip=item.expo?`<span class="mchip expo"><span>📍${item.id}</span></span>`:`<span class="mchip ${item.type}">${ICONS[item.type]||""}</span>`;
+      const label=item.expo?("Punto Expo "+item.id):item.name;
+      b.innerHTML=chip+`<span class="mlabel">${label}</span>`;
+    }else{
+      b.textContent=item.plain?(item.name||item.id):item.id;
+    }
+    b.title=isBuild?((item.expo?("Punto Expo "+item.id+": "):"")+item.name):(item.name||item.id);b.dataset.id=item.id;
     b.setAttribute("aria-label",(isBuild?((item.expo?("Punto Expo "+item.id+": "):"")+item.name):"Stand "+item.id));
     b.addEventListener("click",e=>{e.stopPropagation();selectItem(item)});
     if(selected&&selected.id===item.id)b.classList.add("active");
