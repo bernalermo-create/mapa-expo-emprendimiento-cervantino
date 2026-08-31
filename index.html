@@ -345,7 +345,7 @@ const DATA={"stands":[
 {"id":"2","name":"Patio Secretaría Académica","x":51.8,"y":59.1,"zone":"Servicios, Manufactura y Entretenimiento","desc":"📍 Punto 2 de 3 de la Expo Emprendimiento 2026. Patio frente a las Aulas C107 y C108, con los stands de Servicios, Manufactura y Entretenimiento.","expo":true},
 {"id":"3","name":"Pasillo Comedor Escolar","x":54.0,"y":50.0,"zone":"Pasillo hacia el comedor escolar","desc":"📍 Punto 3 de 3 de la Expo Emprendimiento 2026. Frente al Depósito de Educación Física. Ubicación exclusiva del stand de Kong Dance.","expo":true},
 {"id":"4","name":"Huerta Escolar","x":92.8,"y":43.9,"zone":"Zona verde","desc":"Huerta escolar, parte de las actividades de los 40 años cervantinos.","type":"huerta"},
-{"id":"5","name":"Aula 107","x":60.0,"y":63.5,"zone":"Bloque Bachillerato","desc":"Ventana Aula 107: entrega de pastel, actividad de los 40 años cervantinos.","type":"pastel"},
+{"id":"5","name":"Aula 107","x":60.0,"y":63.5,"zone":"Bloque Bachillerato","desc":"Ventana Aula 107: entrega de pastel, actividad de los 40 años cervantinos."},
 {"id":"6","name":"Secretaría · Bloque Administrativo","x":39.1,"y":68.4,"zone":"Administración · TEINCO","desc":"Bloque Administrativo, oficina de Secretaría.","type":"secretaria"},{"id":"7","name":"Develación de Estatua y Banderas","x":41.5,"y":21.0,"zone":"Bloque A · Jardín junto al punto PE","desc":"Develación de la estatua y las banderas, actividad conmemorativa de los 40 años cervantinos, en el jardín semicircular frente al Bloque A (Aula 102), junto al punto de encuentro PE.","type":"banderas"}
 ]};
 
@@ -371,7 +371,7 @@ function renderMarkers(){
     b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")):item.plain?("plain"+(item.vertical?" vertical":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
     b.style.left=item.x+"%";b.style.top=item.y+"%";
     if(isBuild){
-      const chip=item.expo?`<span class="mchip expo"><span>📍${item.id}</span></span>`:`<span class="mchip ${item.type}">${ICONS[item.type]||""}</span>`;
+      const chip=item.expo?`<span class="mchip expo"><span>📍${item.id}</span></span>`:(item.type?`<span class="mchip ${item.type}">${ICONS[item.type]||""}</span>`:"");
       const label=item.expo?("Punto Expo "+item.id):item.name;
       b.innerHTML=chip+`<span class="mlabel">${label}</span>`;
     }else{
