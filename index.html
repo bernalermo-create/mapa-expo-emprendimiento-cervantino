@@ -335,7 +335,7 @@ const DATA={"stands":[
 {"id":"3","name":"Pasillo Comedor Escolar","x":54.0,"y":50.0,"zone":"Pasillo hacia el comedor escolar","desc":"📍 Punto 3 de 3 de la Expo Emprendimiento 2026. Frente al Depósito de Educación Física. Ubicación exclusiva del stand de Kong Dance.","expo":true},
 {"id":"4","name":"Huerta Escolar","x":92.8,"y":43.9,"zone":"Zona verde","desc":"Huerta escolar, parte de las actividades de los 40 años cervantinos.","icon":"🌱"},
 {"id":"5","name":"Aula 107","x":60.0,"y":63.5,"zone":"Bloque Bachillerato","desc":"Ventana Aula 107: entrega de pastel, actividad de los 40 años cervantinos.","icon":"🧁"},
-{"id":"6","name":"Secretaría · Bloque Administrativo","x":39.1,"y":68.4,"zone":"Administración · TEINCO","desc":"Bloque Administrativo, oficina de Secretaría.","icon":"🏢"}
+{"id":"6","name":"Secretaría · Bloque Administrativo","x":39.1,"y":68.4,"zone":"Administración · TEINCO","desc":"Bloque Administrativo, oficina de Secretaría.","icon":"🏢"},{"id":"7","name":"Develación de Estatua y Banderas","x":31.2,"y":36.5,"zone":"Bloque A · Frente al Aula 102","desc":"Develación de la estatua y las banderas, actividad conmemorativa de los 40 años cervantinos, frente al Aula 102 en el Bloque A.","icon":"🏛️"}
 ]};
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -378,7 +378,7 @@ function setView(v){
   $("#mapSub").textContent=v==="expo"?"Toca un stand para ver su información.":"Toca un punto del mapa para ver su información.";
   $("#mapBadge").textContent=v==="expo"?"EXPO 2026 · STANDS":"COLEGIO · MAPA GENERAL";
   $("#stage").className="stage "+(v==="expo"?"expo":"general");
-  $("#detail").innerHTML=v==="expo"?`<div class="big">Tu ubicación</div><div class="tag">Selecciona un stand</div><p>Busca el número de tu stand o toca un marcador directamente sobre el mapa.</p>`:`<div class="big">Colegio</div><div class="tag">Mapa: 40 años cervantinos</div><p>Ubica los 3 puntos 📍 de la Expo Emprendimiento (Auditorio, Patio Secretaría Académica y Pasillo Comedor Escolar), además de la Huerta, el Aula 107 y Secretaría.</p>`;
+  $("#detail").innerHTML=v==="expo"?`<div class="big">Tu ubicación</div><div class="tag">Selecciona un stand</div><p>Busca el número de tu stand o toca un marcador directamente sobre el mapa.</p>`:`<div class="big">Colegio</div><div class="tag">Mapa: 40 años cervantinos</div><p>Ubica los 3 puntos 📍 de la Expo Emprendimiento (Auditorio, Patio Secretaría Académica y Pasillo Comedor Escolar), además de la Huerta, el Aula 107, Secretaría y la Develación de Estatua y Banderas.</p>`;
   $("#heroEyebrow").style.display=v==="expo"?"":"none";
   $("#heroDesc").style.display=v==="expo"?"":"none";
   $("#heroTitle").textContent=v==="expo"?"Encuentra tu stand en segundos.":"Colegio Miguel de Cervantes Saavedra 40 años";
