@@ -89,19 +89,11 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .standName{position:absolute;transform:translate(-50%,0);font-size:clamp(3.5px,0.62cqw,5.5px);line-height:1;font-weight:700;color:var(--green-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:6.2cqw;text-align:center;pointer-events:none;z-index:2}
 .marker.service{width:8.4%;height:5.6%;font-size:clamp(9.5px,1.6cqw,16px);background:linear-gradient(180deg,#ffd7ae 0%,#ffd7ae 46%,#ffc48a 46%,#ffc48a 100%);border-color:var(--orange-dark);color:#2b1200}
 .marker.compact{width:3.4%;height:3.1%;font-size:clamp(8.5px,1.3cqw,11px)}
-.marker.building{width:max-content;max-width:46cqw;height:auto;background:none;border:none;box-shadow:none;border-radius:0;padding:0;display:flex;align-items:center;gap:.45em;transition:transform .15s}
-.marker.building:hover,.marker.building.active{transform:translate(-50%,-50%) scale(1.06)}
-.mchip{width:1.85em;height:1.85em;min-width:1.85em;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(7,21,45,.35),0 0 0 2px #fff;flex:none}
-.mchip svg{width:66%;height:66%;display:block}
-.mchip.expo{background:var(--navy)}
-.mchip.expo span{font-family:var(--font-display);font-weight:800;color:#fff;font-size:.95em;line-height:1}
-.mchip.huerta{background:var(--green-soft)}
-.mchip.pastel{background:#ffe1ee}
-.mchip.secretaria{background:#dbe9fb}
-.mchip.banderas{background:var(--violet-soft)}
-.mlabel{background:rgba(255,255,255,.94);color:var(--navy);font-family:var(--font-display);font-weight:700;padding:.28em .6em;border-radius:7px;box-shadow:0 2px 6px rgba(7,21,45,.16);font-size:clamp(7px,1.15cqw,12.5px);line-height:1.15;white-space:normal}
-.marker.building.expo .mlabel{color:var(--navy)}
-.marker.building:hover .mlabel,.marker.building.active .mlabel{background:#fff;box-shadow:0 3px 10px rgba(7,21,45,.28)}
+.marker.building{width:max-content;max-width:42cqw;height:auto;background:none;border:none;box-shadow:none;border-radius:0;padding:0;font-family:var(--font-display);font-weight:800;font-size:clamp(7.5px,1.3cqw,14px);line-height:1.2;color:var(--navy);text-align:center;white-space:normal;text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 5px #fff,0 1px 2px #fff;transition:transform .15s,color .15s}
+.marker.building:hover,.marker.building.active{transform:translate(-50%,-50%) scale(1.08);color:var(--cyan-dark)}
+.marker.building.here{color:#c62a20;animation:pulseAqui 1.7s ease-in-out infinite}
+.marker.building.ingreso-pt{color:var(--green-dark)}
+@keyframes pulseAqui{0%,100%{opacity:1}50%{opacity:.5}}
 .marker.plain{width:max-content;max-width:155px;height:auto;background:none;border:none;box-shadow:none;padding:2px 5px;color:var(--navy-2);font-family:var(--font-display);font-weight:700;white-space:normal;text-align:center;line-height:1.15;font-size:clamp(9px,1.2cqw,11px);letter-spacing:.2px}
 .marker.plain.vertical{width:max-content;max-width:90px;transform:translate(-50%,-50%) rotate(-90deg)}
 .marker.plain:hover,.marker.plain.active{background:rgba(39,199,232,.15);border-radius:8px;box-shadow:none;color:var(--cyan-dark)}
@@ -258,7 +250,7 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
         <div class="markers" id="markers"></div>
       </div>
     </div>
-    <div class="hint">💡 En celular: desliza para explorar, usa +/− para acercar. La numeración y distribución se tomaron del plano de organización oficial de la Expo.</div>
+    <div class="hint" id="hint">💡 En celular: desliza para explorar, usa +/− para acercar. La numeración y distribución se tomaron del plano de organización oficial de la Expo.</div>
   </section>
 
   <aside class="panel side">
@@ -286,12 +278,14 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
     </div>
     <div class="side-card"><h3>Resultados</h3><div id="results"></div></div>
     <div class="side-card"><div class="legend">
-      <span><i style="background:#1f9d63"></i> Alimentos</span>
-      <span><i style="background:#ff8a3d"></i> Servicios / manufactura</span>
-      <span><i style="background:#8b5cf6"></i> Entretenimiento</span>
-      <span><i style="background:#d99a4e"></i> Pasillo Comedor Escolar</span>
-      <span><i style="background:#07152d"></i> 📍 Puntos Expo</span>
-      <span><i style="background:#fff;border:1.5px solid var(--orange)"></i> Otros lugares (40 años)</span>
+      <span class="legend-expo"><i style="background:#1f9d63"></i> Alimentos</span>
+      <span class="legend-expo"><i style="background:#ff8a3d"></i> Servicios / manufactura</span>
+      <span class="legend-expo"><i style="background:#8b5cf6"></i> Entretenimiento</span>
+      <span class="legend-expo"><i style="background:#d99a4e"></i> Pasillo Comedor Escolar</span>
+      <span class="legend-general"><i style="background:#07152d"></i> 📍 Puntos Expo</span>
+      <span class="legend-general"><i style="background:#fff;border:1.5px solid var(--orange)"></i> Otros lugares (40 años)</span>
+      <span class="legend-general"><i style="background:#e0342b"></i> ⭐ Usted está aquí</span>
+      <span class="legend-general"><i style="background:var(--green-dark)"></i> 🚪 Ingreso</span>
     </div></div>
   </aside>
 </main>
@@ -345,8 +339,11 @@ const DATA={"stands":[
 {"id":"2","name":"Patio Secretaría Académica","x":51.8,"y":59.1,"zone":"Servicios, Manufactura y Entretenimiento","desc":"📍 Punto 2 de 3 de la Expo Emprendimiento 2026. Patio frente a las Aulas C107 y C108, con los stands de Servicios, Manufactura y Entretenimiento.","expo":true},
 {"id":"3","name":"Pasillo Comedor Escolar","x":54.0,"y":50.0,"zone":"Pasillo hacia el comedor escolar","desc":"📍 Punto 3 de 3 de la Expo Emprendimiento 2026. Frente al Depósito de Educación Física. Ubicación exclusiva del stand de Kong Dance.","expo":true},
 {"id":"4","name":"Huerta Escolar","x":92.8,"y":43.9,"zone":"Zona verde","desc":"Huerta escolar, parte de las actividades de los 40 años cervantinos.","type":"huerta"},
-{"id":"5","name":"Aula 107","x":60.0,"y":63.5,"zone":"Bloque Bachillerato","desc":"Ventana Aula 107: entrega de pastel, actividad de los 40 años cervantinos."},
-{"id":"6","name":"Secretaría · Bloque Administrativo","x":39.1,"y":68.4,"zone":"Administración · TEINCO","desc":"Bloque Administrativo, oficina de Secretaría.","type":"secretaria"},{"id":"7","name":"Develación de Estatua y Banderas","x":41.5,"y":21.0,"zone":"Bloque A · Jardín junto al punto PE","desc":"Develación de la estatua y las banderas, actividad conmemorativa de los 40 años cervantinos, en el jardín semicircular frente al Bloque A (Aula 102), junto al punto de encuentro PE.","type":"banderas"}
+{"id":"5","name":"Aula C107","x":60.0,"y":63.5,"zone":"Bloque C","desc":"Ventana del Aula C107: entrega de pastel, actividad de los 40 años cervantinos."},
+{"id":"6","name":"Secretaría","x":39.1,"y":68.4,"zone":"Bloque D","desc":"Oficina de Secretaría Académica, Bloque D.","type":"secretaria"},{"id":"7","name":"Develación de Estatua y Banderas","x":41.5,"y":21.0,"zone":"Bloque A · Jardín junto al punto PE","desc":"Develación de la estatua y las banderas, actividad conmemorativa de los 40 años cervantinos, en el jardín semicircular frente al Bloque A (Aula 102), junto al punto de encuentro PE.","type":"banderas"},
+{"id":"8","name":"Usted está aquí","x":41.5,"y":54.5,"zone":"Punto de referencia","desc":"Punto de referencia del plano oficial de evacuación del colegio, junto a las escaleras entre Aula de Tecnología/Informática y Secretaría (Bloque D). Úsalo para orientarte y ubicar los demás puntos del mapa.","type":"aqui","here":true},
+{"id":"9","name":"Ingreso · Salida de Emergencia","x":19.2,"y":47.9,"zone":"Bloque A · Frente al Aula 103","desc":"Punto de ingreso para la Expo Emprendimiento y celebración de los 40 años: se usará la Salida de Emergencia ubicada frente al Aula 103, en el Bloque A.","ingreso":true},
+{"id":"10","name":"Tarima","x":47.5,"y":83.5,"zone":"Bloque D · Frente a la Salida de Emergencia","desc":"Espacio de la tarima principal para la celebración de los 40 años, en el Bloque D, frente a la Salida de Emergencia.","type":"tarima"}
 ]};
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -358,22 +355,16 @@ let view="general",filter="all",selected=null,scale=1,panX=0,panY=0,dragging=fal
 function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove("show"),2200)}
 function itemsForView(){return view==="general"?DATA.buildings:DATA.stands.filter(x=>filter==="all"||x.category===filter)}
 
-const ICONS={
-  huerta:'<svg viewBox="0 0 24 24"><rect x="5" y="16" width="14" height="5" rx="1.3" fill="#a9784f"/><path d="M12 20v-7" stroke="#136a44" stroke-width="1.8" stroke-linecap="round"/><path d="M12 13c-3.2 0-5.2-2.1-5.2-5.3 3.2 0 5.2 2.1 5.2 5.3z" fill="#1f9d63"/><path d="M12 13c3.2 0 5.2-2.1 5.2-5.3-3.2 0-5.2 2.1-5.2 5.3z" fill="#3fc98a"/></svg>',
-  pastel:'<svg viewBox="0 0 24 24"><path d="M7 11h10l-1.3 8.1a2 2 0 0 1-2 1.7h-3.4a2 2 0 0 1-2-1.7L7 11z" fill="#e8b98a"/><path d="M5.8 12.2c0-3.6 2.8-6.2 6.2-6.2s6.2 2.6 6.2 6.2H5.8z" fill="#ff9fc2"/><circle cx="12" cy="4.6" r="1.3" fill="#ff5c8a"/></svg>',
-  secretaria:'<svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="1.4" fill="#123059"/><rect x="6.6" y="6.3" width="2.6" height="2.6" fill="#dbe9fb"/><rect x="14.8" y="6.3" width="2.6" height="2.6" fill="#dbe9fb"/><rect x="6.6" y="11.2" width="2.6" height="2.6" fill="#dbe9fb"/><rect x="14.8" y="11.2" width="2.6" height="2.6" fill="#dbe9fb"/><rect x="10.2" y="16.1" width="3.6" height="4.4" fill="#dbe9fb"/></svg>',
-  banderas:'<svg viewBox="0 0 34 24"><line x1="6" y1="1.5" x2="6" y2="22" stroke="#123059" stroke-width="1.6" stroke-linecap="round"/><path d="M6 2.5 14 6 6 9.5z" fill="#3aa0ff"/><line x1="17" y1="0.5" x2="17" y2="22" stroke="#123059" stroke-width="1.6" stroke-linecap="round"/><path d="M17 1.5 25.5 5.3 17 9z" fill="#8a5cf6"/><line x1="27.5" y1="4" x2="27.5" y2="22" stroke="#123059" stroke-width="1.6" stroke-linecap="round"/><path d="M27.5 5 33.5 7.8 27.5 10.6z" fill="#ff8a3d"/></svg>'
-};
+const LANDMARK_EMOJI={huerta:"🌱 ",banderas:"🚩 ",tarima:"🎤 "};
 function renderMarkers(){
   const box=$("#markers");box.innerHTML="";
   itemsForView().forEach(item=>{
     const b=document.createElement("button"),isBuild=view==="general";
-    b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")):item.plain?("plain"+(item.vertical?" vertical":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
+    b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")+(item.here?" here":"")+(item.ingreso?" ingreso-pt":"")):item.plain?("plain"+(item.vertical?" vertical":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
     b.style.left=item.x+"%";b.style.top=item.y+"%";
     if(isBuild){
-      const chip=item.expo?`<span class="mchip expo"><span>📍${item.id}</span></span>`:(item.type?`<span class="mchip ${item.type}">${ICONS[item.type]||""}</span>`:"");
-      const label=item.expo?("Punto Expo "+item.id):item.name;
-      b.innerHTML=chip+`<span class="mlabel">${label}</span>`;
+      const label=item.expo?("📍 Punto Expo "+item.id):item.here?("⭐ "+item.name):item.ingreso?("🚪 "+item.name):((LANDMARK_EMOJI[item.type]||"")+item.name);
+      b.textContent=label;
     }else{
       b.textContent=item.plain?(item.name||item.id):item.id;
     }
@@ -403,12 +394,15 @@ function setView(v){
   $("#mapSub").textContent=v==="expo"?"Toca un stand para ver su información.":"Toca un punto del mapa para ver su información.";
   $("#mapBadge").textContent=v==="expo"?"EXPO 2026 · STANDS":"COLEGIO · MAPA GENERAL";
   $("#stage").className="stage "+(v==="expo"?"expo":"general");
-  $("#detail").innerHTML=v==="expo"?`<div class="big">Tu ubicación</div><div class="tag">Selecciona un stand</div><p>Busca el número de tu stand o toca un marcador directamente sobre el mapa.</p>`:`<div class="big">Colegio</div><div class="tag">Mapa: 40 años cervantinos</div><p>Ubica los 3 puntos 📍 de la Expo Emprendimiento (Auditorio, Patio Secretaría Académica y Pasillo Comedor Escolar), además de la Huerta, el Aula 107, Secretaría y la Develación de Estatua y Banderas.</p>`;
+  $("#detail").innerHTML=v==="expo"?`<div class="big">Tu ubicación</div><div class="tag">Selecciona un stand</div><p>Busca el número de tu stand o toca un marcador directamente sobre el mapa.</p>`:`<div class="big">Colegio</div><div class="tag">Mapa: 40 años cervantinos</div><p>Entra por 🚪 <b>Ingreso</b> (Salida de Emergencia, frente al Aula 103) y busca ⭐ <b>Usted está aquí</b> para orientarte. Desde ahí ubica los 3 puntos 📍 de la Expo Emprendimiento (Auditorio, Patio Secretaría Académica y Pasillo Comedor Escolar), además de la Huerta, el Aula C107, Secretaría, la Tarima y la Develación de Estatua y Banderas.</p>`;
   $("#heroEyebrow").style.display=v==="expo"?"":"none";
   $("#heroDesc").style.display=v==="expo"?"":"none";
   $("#heroTitle").textContent=v==="expo"?"Encuentra tu stand en segundos.":"Colegio Miguel de Cervantes Saavedra 40 años";
   if(!$("#heroEscudo").src)$("#heroEscudo").src=ESCUDO_SRC;
   $("#heroEscudo").style.display=v==="expo"?"none":"";
+  $$(".legend-expo").forEach(x=>x.style.display=v==="expo"?"":"none");
+  $$(".legend-general").forEach(x=>x.style.display=v==="general"?"":"none");
+  $("#hint").textContent=v==="expo"?"💡 En celular: desliza para explorar, usa +/− para acercar. La numeración y distribución se tomaron del plano de organización oficial de la Expo.":"💡 En celular: desliza para explorar, usa +/− para acercar. Busca el punto ⭐ Usted está aquí para ubicarte, luego toca cualquier ícono para ver su información.";
   renderMarkers();renderResults();
 }
 
@@ -430,11 +424,14 @@ function renderResults(){
   const matches=x=>!q||x.id.toLowerCase().includes(q)||(x.name||"").toLowerCase().includes(q)||x.zone.toLowerCase().includes(q)||(x.category||"").toLowerCase().includes(q);
 
   if(view==="general"){
-    const arr=DATA.buildings.filter(matches);
+    const rank=x=>x.here?0:x.ingreso?1:2;
+    const arr=DATA.buildings.filter(matches).sort((a,b)=>rank(a)-rank(b));
     if(!arr.length){box.innerHTML='<div style="font-size:12px;color:#667085;padding:8px">No encontramos coincidencias.</div>';return}
     arr.forEach(item=>{
       const div=document.createElement("div");div.className="result";
-      div.innerHTML=`<div class="dot build">📍${item.id}</div><div><b>${item.name}</b><small>${item.expo?("Punto Expo "+item.id+" de 3 · "):""}${item.zone}</small></div>`;
+      const dotStyle=item.here?"background:#e0342b":item.ingreso?"background:var(--green-dark)":"";
+      const dotText=item.here?"⭐":item.ingreso?"🚪":"📍"+item.id;
+      div.innerHTML=`<div class="dot build" style="${dotStyle}">${dotText}</div><div><b>${item.name}</b><small>${item.expo?("Punto Expo "+item.id+" de 3 · "):""}${item.zone}</small></div>`;
       div.onclick=()=>selectItem(item);box.appendChild(div);
     });
     return;
