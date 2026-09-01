@@ -56,10 +56,16 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .hero-logo img{height:150px;width:auto;display:block;filter:drop-shadow(0 10px 22px rgba(7,21,45,.28))}
 .hero-escudo{height:96px;width:auto;display:block;margin-bottom:0;border-radius:12px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.3));flex:none}
 .hero-top-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.hero-title-block{min-width:0}
+.hero-title-block{min-width:0;flex:1 1 260px}
 .hero-title-line{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .hero-title-line h1{margin:8px 0}
-.hero-countdown{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);color:#fff;font-weight:800;font-size:clamp(11px,1.5vw,14px);padding:8px 14px;border-radius:999px;white-space:nowrap;backdrop-filter:blur(6px)}
+.hero-countdown-wrap{margin-top:18px;padding:16px 20px;border-radius:20px;background:linear-gradient(120deg,#ff5f6d,#ff9a44 35%,#ffd23f 68%,#5fd068);box-shadow:0 10px 26px rgba(0,0,0,.28);animation:cdGlow 3s ease-in-out infinite}
+@keyframes cdGlow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.08)}}
+.cd-label{font-family:var(--font-display);font-weight:800;font-size:clamp(13px,1.7vw,17px);color:#3d1400;text-align:center;margin:0 0 12px;text-shadow:0 1px 0 rgba(255,255,255,.45)}
+.cd-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.cd-box{background:rgba(7,21,45,.88);color:#fff;border-radius:14px;padding:10px 16px;min-width:70px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.32),inset 0 0 0 1px rgba(255,255,255,.08)}
+.cd-box span{display:block;font-family:var(--font-display);font-weight:800;font-size:clamp(22px,3.4vw,34px);line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff,#ffe27a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cd-box small{display:block;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;opacity:.85;margin-top:3px;font-weight:700}
 
 /* Tabs */
 .tabs{max-width:1450px;margin:16px auto 0;padding:0 20px;display:flex;gap:8px;overflow:auto}
@@ -190,7 +196,16 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
     <img id="heroEscudo" class="hero-escudo" alt="Escudo del Colegio Miguel de Cervantes Saavedra I.E.D." style="display:none">
     <div class="hero-title-block">
       <div class="hero-eyebrow" id="heroEyebrow">Mapa oficial de ubicación</div>
-      <div class="hero-title-line"><h1 id="heroTitle">Encuentra tu stand en segundos.</h1><span id="heroCountdown" class="hero-countdown" style="display:none"></span></div>
+      <div class="hero-title-line"><h1 id="heroTitle">Encuentra tu stand en segundos.</h1></div>
+    </div>
+  </div>
+  <div class="hero-countdown-wrap" id="heroCountdownWrap" style="display:none">
+    <p class="cd-label" id="cdLabel">🎉 Faltan para la Celebración 40 años y la Expo Emprendimiento Cervantino 2026</p>
+    <div class="cd-row">
+      <div class="cd-box"><span id="cdDays">0</span><small>días</small></div>
+      <div class="cd-box"><span id="cdHours">00</span><small>horas</small></div>
+      <div class="cd-box"><span id="cdMins">00</span><small>min</small></div>
+      <div class="cd-box"><span id="cdSecs">00</span><small>seg</small></div>
     </div>
   </div>
   <p id="heroDesc">Explora el colegio, cambia al plano de stands, busca por número y toca cualquier punto para ver su zona. Pensado para estudiantes, familias y visitantes.</p></div>
@@ -400,16 +415,29 @@ function applyTransform(){$("#stage").style.transform=`translate(${panX}px,${pan
 function resetMap(){scale=1;panX=0;panY=0;applyTransform()}
 
 const EVENT_DATE=new Date(2026,8,9,0,0,0);
+let countdownTimer=null;
+function tickCountdown(){
+  const diff=EVENT_DATE-new Date();
+  if(diff<=0){
+    $("#cdLabel").textContent="🎉 ¡Hoy es la Celebración 40 años y la Expo Emprendimiento Cervantino 2026!";
+    $("#cdDays").textContent="0";$("#cdHours").textContent="00";$("#cdMins").textContent="00";$("#cdSecs").textContent="00";
+    clearInterval(countdownTimer);
+    return;
+  }
+  const days=Math.floor(diff/86400000);
+  const hours=Math.floor(diff%86400000/3600000);
+  const mins=Math.floor(diff%3600000/60000);
+  const secs=Math.floor(diff%60000/1000);
+  $("#cdLabel").textContent="🎉 Faltan para la Celebración 40 años y la Expo Emprendimiento Cervantino 2026";
+  $("#cdDays").textContent=days;
+  $("#cdHours").textContent=String(hours).padStart(2,"0");
+  $("#cdMins").textContent=String(mins).padStart(2,"0");
+  $("#cdSecs").textContent=String(secs).padStart(2,"0");
+}
 function updateCountdown(){
-  const today=new Date();today.setHours(0,0,0,0);
-  const target=new Date(EVENT_DATE);target.setHours(0,0,0,0);
-  const days=Math.round((target-today)/86400000);
-  let text;
-  if(days>1)text=`🎉 Faltan ${days} días para la Celebración 40 años y la Expo Emprendimiento Cervantino 2026`;
-  else if(days===1)text="🎉 ¡Falta 1 día para la Celebración 40 años y la Expo Emprendimiento Cervantino 2026!";
-  else if(days===0)text="🎉 ¡Hoy es la Celebración 40 años y la Expo Emprendimiento Cervantino 2026!";
-  else text="🎉 ¡Gracias por celebrar los 40 años y la Expo Emprendimiento Cervantino 2026!";
-  $("#heroCountdown").textContent=text;
+  tickCountdown();
+  clearInterval(countdownTimer);
+  countdownTimer=setInterval(tickCountdown,1000);
 }
 function setView(v){
   view=v;selected=null;filter="all";resetMap();
@@ -425,8 +453,8 @@ function setView(v){
   $("#heroTitle").textContent=v==="expo"?"Encuentra tu stand en segundos.":"Colegio Miguel de Cervantes Saavedra 40 años";
   if(!$("#heroEscudo").src)$("#heroEscudo").src=ESCUDO_SRC;
   $("#heroEscudo").style.display=v==="expo"?"none":"";
-  $("#heroCountdown").style.display=v==="expo"?"none":"";
-  if(v==="general")updateCountdown();
+  $("#heroCountdownWrap").style.display=v==="expo"?"none":"";
+  if(v==="general")updateCountdown();else clearInterval(countdownTimer);
   $$(".legend-expo").forEach(x=>x.style.display=v==="expo"?"":"none");
   $$(".legend-general").forEach(x=>x.style.display=v==="general"?"":"none");
   $("#hint").textContent=v==="expo"?"💡 En celular: desliza para explorar, usa +/− para acercar. La numeración y distribución se tomaron del plano de organización oficial de la Expo.":"💡 En celular: desliza para explorar, usa +/− para acercar. Entra por 🚪 Ingreso y toca cualquier ícono para ver su información.";
