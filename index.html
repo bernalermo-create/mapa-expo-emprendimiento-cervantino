@@ -397,8 +397,8 @@ function renderMarkers(){
       if(item.big){
         b.innerHTML=`<span class="bigIcon">${LANDMARK_EMOJI[item.type]||""}</span>${item.name}`;
       }else{
-        const LABEL_BREAKS={juegos:"Juegos\nTradicionales",registro:"Registro y\nEntrega de Manillas"};
-        const label=item.expo?("📍 Punto Expo "+item.id):item.here?("⭐ "+item.name):item.ingreso?("🚪 "+item.name):((LANDMARK_EMOJI[item.type]||"")+(LABEL_BREAKS[item.type]||item.name));
+        const NAME_BREAKS={"4":"Huerta\nEscolar","5":"Aula\nC107","7":"Develación de Estatua\ny Banderas","11":"Registro y\nEntrega de Manillas","12":"Juegos\nTradicionales","13":"Primera Infancia\n· Información","14":"Biblioteca\nEscolar","15":"Teinco\n(Universidad)"};
+        const label=item.expo?("📍 Punto Expo "+item.id):item.here?("⭐ "+item.name):item.ingreso?("🚪 "+item.name):((LANDMARK_EMOJI[item.type]||"")+(NAME_BREAKS[item.id]||item.name));
         b.textContent=label;
       }
     }else{
