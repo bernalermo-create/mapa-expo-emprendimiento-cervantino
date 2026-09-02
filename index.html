@@ -101,12 +101,12 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .standName{position:absolute;transform:translate(-50%,0);font-size:clamp(3.5px,0.62cqw,5.5px);line-height:1;font-weight:700;color:var(--green-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:6.2cqw;text-align:center;pointer-events:none;z-index:2}
 .marker.service{width:8.4%;height:5.6%;font-size:clamp(9.5px,1.6cqw,16px);background:linear-gradient(180deg,#ffd7ae 0%,#ffd7ae 46%,#ffc48a 46%,#ffc48a 100%);border-color:var(--orange-dark);color:#2b1200}
 .marker.compact{width:3.4%;height:3.1%;font-size:clamp(8.5px,1.3cqw,11px)}
-.marker.building{width:max-content;max-width:42cqw;height:auto;background:none;border:none;box-shadow:none;border-radius:0;padding:0;font-family:var(--font-display);font-weight:800;font-size:clamp(7.5px,1.3cqw,14px);line-height:1.2;color:var(--navy);text-align:center;white-space:normal;text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 5px #fff,0 1px 2px #fff;transition:transform .15s,color .15s}
+.marker.building{width:max-content;max-width:42cqw;height:auto;background:none;border:none;box-shadow:none;border-radius:0;padding:0;font-family:var(--font-display);font-weight:800;font-size:clamp(7.5px,1.3cqw,14px);line-height:1.2;color:var(--navy);text-align:center;white-space:pre-line;text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 5px #fff,0 1px 2px #fff;transition:transform .15s,color .15s}
 .marker.building:hover,.marker.building.active{transform:translate(-50%,-50%) scale(1.08);color:var(--cyan-dark)}
 .marker.building.ingreso-pt{color:var(--green-dark);animation:ingresoPulse 1.6s ease-in-out infinite}
 @keyframes ingresoPulse{0%,100%{text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 5px #fff,0 1px 2px #fff}50%{text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 14px #5fd068,0 1px 2px #fff}}
-.marker.building.big{font-size:clamp(9.5px,1.7cqw,18px)}
-.marker.building.big .bigIcon{font-size:1.7em;line-height:1;display:block;margin:0 auto 1px}
+.marker.building.big{font-size:clamp(8px,1.4cqw,15px)}
+.marker.building.big .bigIcon{font-size:1.4em;line-height:1;display:block;margin:0 auto 1px}
 .marker.building.tarima-pt{color:#7a4a00}
 .marker.plain{width:max-content;max-width:155px;height:auto;background:none;border:none;box-shadow:none;padding:2px 5px;color:var(--navy-2);font-family:var(--font-display);font-weight:700;white-space:normal;text-align:center;line-height:1.15;font-size:clamp(9px,1.2cqw,11px);letter-spacing:.2px}
 .marker.plain.vertical{width:max-content;max-width:90px;transform:translate(-50%,-50%) rotate(-90deg)}
@@ -370,11 +370,11 @@ const DATA={"stands":[
 {"id":"6","name":"Secretaría","x":39.1,"y":68.4,"zone":"Bloque D","desc":"Oficina de Secretaría Académica, Bloque D.","type":"secretaria"},{"id":"7","name":"Develación de Estatua y Banderas","x":41.5,"y":21.0,"zone":"Bloque A · Jardín junto al punto PE","desc":"Develación de la estatua y las banderas, actividad conmemorativa de los 40 años cervantinos, en el jardín semicircular frente al Bloque A (Aula 102), junto al punto de encuentro PE.","type":"banderas"},
 {"id":"9","name":"Ingreso","x":43.9,"y":85.5,"zone":"Bloque D · Salida de Emergencia","desc":"Punto de ingreso para la Expo Emprendimiento y celebración de los 40 años: se usará la Salida de Emergencia del Bloque D (junto a Secretaría). A la derecha de este ingreso, por la cancha, está el Registro y entrega de manillas.","type":"ingreso","ingreso":true,"big":true},
 {"id":"10","name":"Tarima","x":56.0,"y":90.0,"zone":"Bloque D · Frente a la Salida de Emergencia","desc":"Espacio de la tarima principal para la celebración de los 40 años, en el Bloque D, frente a la Salida de Emergencia.","type":"tarima","big":true,"tarima":true},
-{"id":"11","name":"Registro y Entrega de Manillas","x":52.5,"y":81.0,"zone":"Bloque D · Lado derecho del Ingreso, por la cancha","desc":"Punto de registro y entrega de manillas, al lado derecho del Ingreso, por la cancha.","type":"registro"},
-{"id":"12","name":"Juegos Tradicionales","x":35.5,"y":75.5,"zone":"Bloque D · Entre Secretaría y el Ingreso","desc":"Sección de juegos tradicionales, actividad de los 40 años cervantinos, ubicada entre Secretaría y el Ingreso (Salida de Emergencia) del Bloque D.","type":"juegos"},
-{"id":"13","name":"Primera Infancia · Información","x":61.0,"y":39.0,"zone":"Frente al Auditorio","desc":"Punto de información sobre Primera Infancia, ubicado frente al Auditorio.","type":"infancia"},
-{"id":"14","name":"Biblioteca Escolar","x":43.0,"y":65.0,"zone":"Entre Secretaría y el Punto Expo 2","desc":"Puesto de la Biblioteca Escolar, ubicado entre Secretaría y el Punto Expo 2 (Patio Secretaría Académica).","type":"biblioteca"},
-{"id":"15","name":"Teinco (Universidad)","x":44.0,"y":56.5,"zone":"Entre Secretaría y el Punto Expo 2","desc":"Puesto informativo de Teinco (universidad), ubicado entre Secretaría y el Punto Expo 2 (Patio Secretaría Académica).","type":"teinco"}
+{"id":"11","name":"Registro y Entrega de Manillas","x":61.0,"y":79.0,"zone":"Bloque D · Lado derecho del Ingreso, por la cancha","desc":"Punto de registro y entrega de manillas, al lado derecho del Ingreso, por la cancha.","type":"registro"},
+{"id":"12","name":"Juegos Tradicionales","x":33.0,"y":73.0,"zone":"Bloque D · Entre Secretaría y el Ingreso","desc":"Sección de juegos tradicionales, actividad de los 40 años cervantinos, ubicada entre Secretaría y el Ingreso (Salida de Emergencia) del Bloque D.","type":"juegos"},
+{"id":"13","name":"Primera Infancia · Información","x":54.0,"y":36.0,"zone":"Frente al Auditorio","desc":"Punto de información sobre Primera Infancia, ubicado frente al Auditorio.","type":"infancia"},
+{"id":"14","name":"Biblioteca Escolar","x":41.5,"y":62.0,"zone":"Entre Secretaría y el Punto Expo 2","desc":"Puesto de la Biblioteca Escolar, ubicado entre Secretaría y el Punto Expo 2 (Patio Secretaría Académica).","type":"biblioteca"},
+{"id":"15","name":"Teinco (Universidad)","x":41.0,"y":54.0,"zone":"Entre Secretaría y el Punto Expo 2","desc":"Puesto informativo de Teinco (universidad), ubicado entre Secretaría y el Punto Expo 2 (Patio Secretaría Académica).","type":"teinco"}
 ]};
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -397,7 +397,8 @@ function renderMarkers(){
       if(item.big){
         b.innerHTML=`<span class="bigIcon">${LANDMARK_EMOJI[item.type]||""}</span>${item.name}`;
       }else{
-        const label=item.expo?("📍 Punto Expo "+item.id):item.here?("⭐ "+item.name):item.ingreso?("🚪 "+item.name):((LANDMARK_EMOJI[item.type]||"")+item.name);
+        const LABEL_BREAKS={juegos:"Juegos\nTradicionales",registro:"Registro y\nEntrega de Manillas"};
+        const label=item.expo?("📍 Punto Expo "+item.id):item.here?("⭐ "+item.name):item.ingreso?("🚪 "+item.name):((LANDMARK_EMOJI[item.type]||"")+(LABEL_BREAKS[item.type]||item.name));
         b.textContent=label;
       }
     }else{
