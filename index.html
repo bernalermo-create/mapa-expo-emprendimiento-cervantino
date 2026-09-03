@@ -113,6 +113,7 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .marker.building.medica-pt{color:#d6336c;animation:medicaPulse 1.6s ease-in-out infinite}
 @keyframes medicaPulse{0%,100%{text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 5px #fff,0 1px 2px #fff}50%{text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 12px #ff8fae,0 1px 2px #fff}}
 .marker.plain{width:max-content;max-width:155px;height:auto;background:none;border:none;box-shadow:none;padding:2px 5px;color:var(--navy-2);font-family:var(--font-display);font-weight:700;white-space:normal;text-align:center;line-height:1.15;font-size:clamp(9px,1.2cqw,11px);letter-spacing:.2px}
+.marker.plain.compact{max-width:105px;font-size:clamp(7px,0.95cqw,9px);line-height:1.1;padding:1px 3px}
 .marker.plain.vertical{width:max-content;max-width:90px;transform:translate(-50%,-50%) rotate(-90deg)}
 .marker.plain:hover,.marker.plain.active{background:rgba(39,199,232,.15);border-radius:8px;box-shadow:none;color:var(--cyan-dark)}
 .marker.plain.vertical:hover,.marker.plain.vertical.active{transform:translate(-50%,-50%) rotate(-90deg) scale(1.1)}
@@ -341,9 +342,9 @@ const DATA={"stands":[
 {"id":"12","x":11.0,"y":51.19,"category":"Alimentos","zone":"Zona de alimentos · Pasillo 1 (con tomacorriente)","name":"Doggy crunch"},
 {"id":"13","x":38.0,"y":51.19,"category":"Alimentos","zone":"Zona de alimentos · Pasillo 3 (con tomacorriente)","name":"Sabor Latino"},
 {"id":"14","x":11.0,"y":58.33,"category":"Alimentos","zone":"Zona de alimentos · Pasillo 1 (con tomacorriente)","name":"Bocado Boom"},
-{"id":"6","x":11.0,"y":65.48,"category":"Alimentos","zone":"Zona de alimentos · Pasillo 1 (con tomacorriente)","name":"WIWI'S"},
-{"id":"16","x":38.0,"y":58.33,"category":"Alimentos","zone":"Zona de alimentos · Pasillo 3 (con tomacorriente)","name":"Rollos locos"},
-{"id":"17","x":38.0,"y":72.62,"category":"Alimentos","zone":"Zona de alimentos · Pasillo 3 (con tomacorriente)","name":"Sweet Secret"},
+{"id":"6","x":38.0,"y":58.33,"category":"Alimentos","zone":"Zona de alimentos · Pasillo 3 (con tomacorriente)","name":"WIWI'S"},
+{"id":"16","x":11.0,"y":65.48,"category":"Alimentos","zone":"Zona de alimentos · Pasillo 1 (con tomacorriente)","name":"Rollos locos"},
+{"id":"17","x":38.0,"y":65.48,"category":"Alimentos","zone":"Zona de alimentos · Pasillo 3 (con tomacorriente)","name":"Sweet Secret"},
 {"id":"22","x":14.0,"y":82.14,"category":"Alimentos","zone":"Zona de alimentos (entrada)","name":"Reservado","placeholder":true},
 {"id":"21","x":22.0,"y":82.14,"category":"Alimentos","zone":"Zona de alimentos (entrada)","name":"Reservado","placeholder":true},
 {"id":"20","x":30.0,"y":82.14,"category":"Alimentos","zone":"Zona de alimentos (entrada)","name":"Reservado","placeholder":true},
@@ -358,16 +359,16 @@ const DATA={"stands":[
 {"id":"MANU 7","x":51.0,"y":62.14,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"T-Racing","plain":true,"vertical":true},
 {"id":"MANU 2","x":69.0,"y":62.14,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Dail TC","plain":true,"vertical":true},
 {"id":"MANU 5","x":77.0,"y":62.14,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Guerreros de madera","plain":true,"vertical":true},
-{"id":"MANU 9","x":60.0,"y":16.9,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Metaluz","plain":true},
-{"id":"MANU 10","x":86.0,"y":16.9,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Sky Races","plain":true},
-{"id":"MANU 11","x":73.0,"y":23.81,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica (carpa entre S03 y S01)","name":"Susurro natural","plain":true},
-{"id":"MANU 12","x":73.0,"y":31.55,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica (carpa entre S03 y S01)","name":"Magic Essences","plain":true},
+{"id":"MANU 9","x":56.0,"y":16.9,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Metaluz","plain":true,"compact":true},
+{"id":"MANU 10","x":90.0,"y":16.9,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Sky Races","plain":true,"compact":true},
+{"id":"MANU 11","x":73.0,"y":22.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica (carpa entre S03 y S01)","name":"Susurro Nat.","plain":true,"compact":true},
+{"id":"MANU 12","x":73.0,"y":33.5,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica (carpa entre S03 y S01)","name":"Magic Ess.","plain":true,"compact":true},
 {"id":"MANU 13","x":95.0,"y":62.14,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Patitas secas","plain":true,"vertical":true},
 {"id":"MANU 14","x":86.0,"y":75.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Son las manillas","plain":true},
 {"id":"PC1","x":73.0,"y":86.7,"category":"Pasillo Comedor Escolar","zone":"Pasillo Comedor Escolar · ubicación exclusiva","name":"Kong Dance","compact":true}
 ],"buildings":[
 {"id":"1","name":"Auditorio","x":79.10,"y":45.5,"zone":"Zona de Alimentos","desc":"📍 Punto 1 de 3 de la Expo Emprendimiento 2026. Aquí se ubican los 26 stands de alimentos, alrededor del Auditorio.","expo":true},
-{"id":"16","name":"Atención\nMédica","x":68.0,"y":18.0,"zone":"Bloque B · Cerca del Aula B102","desc":"Punto de atención médica, ubicado en el corredor del Bloque B, cerca del Aula B102.","type":"medica","big":true,"medica":true},
+{"id":"16","name":"Atención\nMédica","x":70.0,"y":25.0,"zone":"Bloque B · Cerca del Aula B102","desc":"Punto de atención médica, ubicado en el corredor del Bloque B, cerca del Aula B102.","type":"medica","big":true,"medica":true},
 {"id":"2","name":"Patio Secretaría Académica","x":51.8,"y":59.1,"zone":"Servicios, Manufactura y Entretenimiento","desc":"📍 Punto 2 de 3 de la Expo Emprendimiento 2026. Patio frente a las Aulas C107 y C108, con los stands de Servicios, Manufactura y Entretenimiento.","expo":true},
 {"id":"3","name":"Pasillo Comedor Escolar","x":54.0,"y":50.0,"zone":"Pasillo hacia el comedor escolar","desc":"📍 Punto 3 de 3 de la Expo Emprendimiento 2026. Frente al Depósito de Educación Física. Ubicación exclusiva del stand de Kong Dance.","expo":true},
 {"id":"4","name":"Huerta Escolar","x":92.8,"y":43.9,"zone":"Zona verde","desc":"Huerta escolar, parte de las actividades de los 40 años cervantinos.","type":"huerta"},
@@ -397,7 +398,7 @@ function renderMarkers(){
   const box=$("#markers");box.innerHTML="";
   itemsForView().forEach(item=>{
     const b=document.createElement("button"),isBuild=view==="general";
-    b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")+(item.here?" here":"")+(item.ingreso?" ingreso-pt":"")+(item.tarima?" tarima-pt":"")+(item.medica?" medica-pt":"")+(item.big?" big":"")):item.plain?("plain"+(item.vertical?" vertical":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
+    b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")+(item.here?" here":"")+(item.ingreso?" ingreso-pt":"")+(item.tarima?" tarima-pt":"")+(item.medica?" medica-pt":"")+(item.big?" big":"")):item.plain?("plain"+(item.vertical?" vertical":"")+(item.compact?" compact":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
     b.style.left=item.x+"%";b.style.top=item.y+"%";
     if(isBuild){
       if(item.big){
