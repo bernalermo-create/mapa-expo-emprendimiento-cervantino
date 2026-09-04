@@ -118,6 +118,7 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .marker.plain{width:max-content;max-width:155px;height:auto;background:none;border:none;box-shadow:none;padding:2px 5px;color:var(--navy-2);font-family:var(--font-display);font-weight:700;white-space:normal;text-align:center;line-height:1.15;font-size:clamp(9px,1.2cqw,11px);letter-spacing:.2px}
 .marker.plain.compact{max-width:105px;font-size:clamp(7px,0.95cqw,9px);line-height:1.1;padding:1px 3px}
 .marker.plain.vertical{width:max-content;max-width:90px;transform:translate(-50%,-50%) rotate(-90deg)}
+.marker.plain.vertical.compact{max-width:52px}
 .marker.plain:hover,.marker.plain.active{background:rgba(39,199,232,.15);border-radius:8px;box-shadow:none;color:var(--cyan-dark)}
 .marker.plain.vertical:hover,.marker.plain.vertical.active{transform:translate(-50%,-50%) rotate(-90deg) scale(1.1)}
 .marker:hover,.marker.active{transform:translate(-50%,-50%) scale(1.15);z-index:10;box-shadow:0 0 0 5px rgba(39,199,232,.3),0 8px 18px rgba(0,0,0,.24)}
@@ -352,22 +353,22 @@ const DATA={"stands":[
 {"id":"21","x":22.0,"y":82.14,"category":"Alimentos","zone":"Zona de alimentos (entrada)","name":"Reservado","placeholder":true},
 {"id":"20","x":30.0,"y":82.14,"category":"Alimentos","zone":"Zona de alimentos (entrada)","name":"Reservado","placeholder":true},
 {"id":"19","x":38.0,"y":82.14,"category":"Alimentos","zone":"Zona de alimentos (entrada)","name":"Reservado","placeholder":true},
-{"id":"S03","x":60.0,"y":40.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"CultiBox","plain":true},
-{"id":"S01","x":86.0,"y":40.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Creaciones SAC","plain":true},
-{"id":"S02","x":60.0,"y":51.43,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Raíces Naturales","plain":true},
-{"id":"MANU 4","x":86.0,"y":51.43,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Kasly creaciones","plain":true},
-{"id":"MANU 6","x":51.0,"y":27.62,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Kurokawaii","plain":true,"vertical":true},
-{"id":"MANU 1","x":60.0,"y":72.86,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Hilos del corazón","plain":true},
-{"id":"MANU 3","x":95.0,"y":27.62,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Party Game","plain":true,"vertical":true},
-{"id":"MANU 7","x":51.0,"y":62.14,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"T-Racing","plain":true,"vertical":true},
-{"id":"MANU 2","x":69.0,"y":62.14,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Dail TC","plain":true,"vertical":true},
-{"id":"MANU 5","x":77.0,"y":62.14,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Guerreros de madera","plain":true,"vertical":true},
+{"id":"S03","x":58.0,"y":40.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"CultiBox","plain":true,"compact":true},
+{"id":"S01","x":88.0,"y":40.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Creaciones SAC","plain":true,"compact":true},
+{"id":"S02","x":58.0,"y":51.43,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Raíces Naturales","plain":true,"compact":true},
+{"id":"MANU 4","x":84.0,"y":51.43,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Kasly creaciones","plain":true,"compact":true},
+{"id":"MANU 6","x":44.0,"y":24.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Kurokawaii","plain":true,"vertical":true,"compact":true},
+{"id":"MANU 1","x":58.0,"y":74.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Hilos del corazón","plain":true,"compact":true},
+{"id":"MANU 3","x":99.0,"y":27.5,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Party Game","plain":true,"vertical":true,"compact":true},
+{"id":"MANU 7","x":45.0,"y":64.0,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"T-Racing","plain":true,"vertical":true,"compact":true},
+{"id":"MANU 2","x":63.0,"y":64.0,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Dail TC","plain":true,"vertical":true,"compact":true},
+{"id":"MANU 5","x":79.0,"y":62.0,"category":"Entretenimiento","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Guerreros","plain":true,"vertical":true,"compact":true},
 {"id":"MANU 9","x":56.0,"y":16.9,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Metaluz","plain":true,"compact":true},
 {"id":"MANU 10","x":90.0,"y":16.9,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Sky Races","plain":true,"compact":true},
 {"id":"MANU 11","x":73.0,"y":22.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica (carpa entre S03 y S01)","name":"Susurro Nat.","plain":true,"compact":true},
 {"id":"MANU 12","x":73.0,"y":33.5,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica (carpa entre S03 y S01)","name":"Magic Ess.","plain":true,"compact":true},
-{"id":"MANU 13","x":95.0,"y":62.14,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Patitas secas","plain":true,"vertical":true},
-{"id":"MANU 14","x":86.0,"y":75.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Son las manillas","plain":true},
+{"id":"MANU 13","x":99.0,"y":63.5,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Patitas secas","plain":true,"vertical":true,"compact":true},
+{"id":"MANU 14","x":84.0,"y":74.0,"category":"Servicios y manufactura","zone":"Zona de servicios y manufactura · Patio frente a Secretaría Académica","name":"Son las manillas","plain":true,"compact":true},
 {"id":"PC1","x":73.0,"y":86.7,"category":"Pasillo Comedor Escolar","zone":"Pasillo Comedor Escolar · ubicación exclusiva","name":"Kong Dance","compact":true}
 ],"buildings":[
 {"id":"1","name":"Auditorio","x":79.10,"y":45.5,"zone":"Zona de Alimentos","desc":"📍 Punto 1 de 3 de la Expo Emprendimiento 2026. Aquí se ubican los 26 stands de alimentos, alrededor del Auditorio.","expo":true},
