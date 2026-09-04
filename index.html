@@ -114,6 +114,7 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .marker.building.big .bigIcon.svgIcon svg{width:100%;height:100%;display:block}
 .marker.building.tarima-pt{color:#7a4a00}
 .marker.building.medica-pt{color:#d6336c;animation:medicaPulse 1.6s ease-in-out infinite}
+.marker.building.registro-pt{font-size:clamp(6px,1cqw,10.5px);max-width:30cqw}
 @keyframes medicaPulse{0%,100%{text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 5px #fff,0 1px 2px #fff}50%{text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 12px #ff8fae,0 1px 2px #fff}}
 .marker.plain{width:max-content;max-width:155px;height:auto;background:none;border:none;box-shadow:none;padding:2px 5px;color:var(--navy-2);font-family:var(--font-display);font-weight:700;white-space:normal;text-align:center;line-height:1.15;font-size:clamp(9px,1.2cqw,11px);letter-spacing:.2px}
 .marker.plain.compact{max-width:105px;font-size:clamp(7px,0.95cqw,9px);line-height:1.1;padding:1px 3px}
@@ -380,7 +381,7 @@ const DATA={"stands":[
 {"id":"6","name":"Secretaría","x":39.1,"y":68.4,"zone":"Bloque D","desc":"Oficina de Secretaría Académica, Bloque D.","type":"secretaria"},{"id":"7","name":"Develación de Estatua y Banderas","x":41.5,"y":21.0,"zone":"Bloque A · Jardín junto al punto PE","desc":"Develación de la estatua y las banderas, actividad conmemorativa de los 40 años cervantinos, en el jardín semicircular frente al Bloque A (Aula 102), junto al punto de encuentro PE.","type":"banderas"},
 {"id":"9","name":"Ingreso","x":45.5,"y":88.0,"zone":"Bloque D · Salida de Emergencia","desc":"Punto de ingreso para la Expo Emprendimiento y celebración de los 40 años: se usará la Salida de Emergencia del Bloque D (junto a Secretaría). A la derecha de este ingreso, por la cancha, está el Registro y entrega de manillas.","type":"ingreso","ingreso":true,"big":true},
 {"id":"10","name":"Tarima","x":89.0,"y":82.5,"zone":"Frente al Aula C103, después del punto de encuentro (PE)","desc":"Espacio de la tarima principal para la celebración de los 40 años, frente al Aula C103, después del punto de encuentro (PE).","type":"tarima","big":true,"tarima":true},
-{"id":"11","name":"Registro y Entrega de Manillas","x":67.0,"y":83.0,"zone":"Bloque D · Lado derecho del Ingreso, por la cancha","desc":"Punto de registro y entrega de manillas, al lado derecho del Ingreso, por la cancha.","type":"registro"},
+{"id":"11","name":"Registro y Entrega de Manillas","x":63.0,"y":85.0,"zone":"Bloque D · Lado derecho del Ingreso, por la cancha","desc":"Punto de registro y entrega de manillas, al lado derecho del Ingreso, por la cancha.","type":"registro","registro":true},
 {"id":"12","name":"Juegos Tradicionales","x":29.0,"y":78.0,"zone":"Bloque D · Entre Secretaría y el Ingreso","desc":"Sección de juegos tradicionales, actividad de los 40 años cervantinos, ubicada entre Secretaría y el Ingreso (Salida de Emergencia) del Bloque D.","type":"juegos"},
 {"id":"13","name":"Primera Infancia · Información","x":54.0,"y":36.0,"zone":"Frente al Auditorio","desc":"Punto de información sobre Primera Infancia, ubicado frente al Auditorio.","type":"infancia"},
 {"id":"14","name":"Biblioteca Escolar","x":46.0,"y":64.0,"zone":"Entre Secretaría y el Punto Expo 2","desc":"Puesto de la Biblioteca Escolar, ubicado entre Secretaría y el Punto Expo 2 (Patio Secretaría Académica).","type":"biblioteca"},
@@ -402,7 +403,7 @@ function renderMarkers(){
   const box=$("#markers");box.innerHTML="";
   itemsForView().forEach(item=>{
     const b=document.createElement("button"),isBuild=view==="general";
-    b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")+(item.here?" here":"")+(item.ingreso?" ingreso-pt":"")+(item.tarima?" tarima-pt":"")+(item.medica?" medica-pt":"")+(item.big?" big":"")):item.plain?("plain"+(item.vertical?" vertical":"")+(item.compact?" compact":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
+    b.className="marker "+(isBuild?("building"+(item.expo?" expo":" landmark")+(item.here?" here":"")+(item.ingreso?" ingreso-pt":"")+(item.tarima?" tarima-pt":"")+(item.medica?" medica-pt":"")+(item.registro?" registro-pt":"")+(item.big?" big":"")):item.plain?("plain"+(item.vertical?" vertical":"")+(item.compact?" compact":"")):((item.category==="Alimentos"?"stand":"stand service")+(item.compact?" compact":"")));
     b.style.left=item.x+"%";b.style.top=item.y+"%";
     if(isBuild){
       if(item.big){
