@@ -106,6 +106,9 @@ h1,.brand strong,.map-title strong,.detail .big,.side-card h3,.hero-eyebrow{font
 .marker.building.ingreso-pt{color:var(--green-dark);animation:ingresoPulse 1.6s ease-in-out infinite}
 @keyframes ingresoPulse{0%,100%{text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 5px #fff,0 1px 2px #fff}50%{text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 14px #5fd068,0 1px 2px #fff}}
 .marker.building.big{font-size:clamp(8px,1.4cqw,15px)}
+.marker.building.big.tarima-pt,.marker.building.big.ingreso-pt{font-size:clamp(11px,2cqw,21px)}
+.marker.building.big.tarima-pt .bigIcon,.marker.building.big.ingreso-pt .bigIcon{font-size:1.5em}
+.marker.building.big.ingreso-pt .bigIcon.svgIcon{width:1.6em;height:1.6em}
 .marker.building.big .bigIcon{font-size:1.4em;line-height:1;display:block;margin:0 auto 1px}
 .marker.building.big .bigIcon.svgIcon{width:1.5em;height:1.5em;margin:0 auto 2px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
 .marker.building.big .bigIcon.svgIcon svg{width:100%;height:100%;display:block}
@@ -368,14 +371,14 @@ const DATA={"stands":[
 {"id":"PC1","x":73.0,"y":86.7,"category":"Pasillo Comedor Escolar","zone":"Pasillo Comedor Escolar · ubicación exclusiva","name":"Kong Dance","compact":true}
 ],"buildings":[
 {"id":"1","name":"Auditorio","x":79.10,"y":45.5,"zone":"Zona de Alimentos","desc":"📍 Punto 1 de 3 de la Expo Emprendimiento 2026. Aquí se ubican los 26 stands de alimentos, alrededor del Auditorio.","expo":true},
-{"id":"16","name":"Atención\nMédica","x":70.0,"y":25.0,"zone":"Bloque B · Cerca del Aula B102","desc":"Punto de atención médica, ubicado en el corredor del Bloque B, cerca del Aula B102.","type":"medica","big":true,"medica":true},
+{"id":"16","name":"Enfermería","x":70.0,"y":25.0,"zone":"Bloque B · Cerca del Aula B102","desc":"Enfermería, ubicada en el corredor del Bloque B, cerca del Aula B102.","type":"medica","big":true,"medica":true},
 {"id":"2","name":"Patio Secretaría Académica","x":51.8,"y":59.1,"zone":"Servicios, Manufactura y Entretenimiento","desc":"📍 Punto 2 de 3 de la Expo Emprendimiento 2026. Patio frente a las Aulas C107 y C108, con los stands de Servicios, Manufactura y Entretenimiento.","expo":true},
 {"id":"3","name":"Pasillo Comedor Escolar","x":54.0,"y":50.0,"zone":"Pasillo hacia el comedor escolar","desc":"📍 Punto 3 de 3 de la Expo Emprendimiento 2026. Frente al Depósito de Educación Física. Ubicación exclusiva del stand de Kong Dance.","expo":true},
 {"id":"4","name":"Huerta Escolar","x":92.8,"y":43.9,"zone":"Zona verde","desc":"Huerta escolar, parte de las actividades de los 40 años cervantinos.","type":"huerta"},
 {"id":"5","name":"Aula C107","x":60.0,"y":63.5,"zone":"Bloque C","desc":"Ventana del Aula C107: entrega de pastel, actividad de los 40 años cervantinos."},
 {"id":"6","name":"Secretaría","x":39.1,"y":68.4,"zone":"Bloque D","desc":"Oficina de Secretaría Académica, Bloque D.","type":"secretaria"},{"id":"7","name":"Develación de Estatua y Banderas","x":41.5,"y":21.0,"zone":"Bloque A · Jardín junto al punto PE","desc":"Develación de la estatua y las banderas, actividad conmemorativa de los 40 años cervantinos, en el jardín semicircular frente al Bloque A (Aula 102), junto al punto de encuentro PE.","type":"banderas"},
 {"id":"9","name":"Ingreso","x":45.5,"y":88.0,"zone":"Bloque D · Salida de Emergencia","desc":"Punto de ingreso para la Expo Emprendimiento y celebración de los 40 años: se usará la Salida de Emergencia del Bloque D (junto a Secretaría). A la derecha de este ingreso, por la cancha, está el Registro y entrega de manillas.","type":"ingreso","ingreso":true,"big":true},
-{"id":"10","name":"Tarima","x":56.0,"y":90.0,"zone":"Bloque D · Frente a la Salida de Emergencia","desc":"Espacio de la tarima principal para la celebración de los 40 años, en el Bloque D, frente a la Salida de Emergencia.","type":"tarima","big":true,"tarima":true},
+{"id":"10","name":"Tarima","x":85.0,"y":82.5,"zone":"Frente al Aula C103, después del punto de encuentro (PE)","desc":"Espacio de la tarima principal para la celebración de los 40 años, frente al Aula C103, después del punto de encuentro (PE).","type":"tarima","big":true,"tarima":true},
 {"id":"11","name":"Registro y Entrega de Manillas","x":61.0,"y":79.0,"zone":"Bloque D · Lado derecho del Ingreso, por la cancha","desc":"Punto de registro y entrega de manillas, al lado derecho del Ingreso, por la cancha.","type":"registro"},
 {"id":"12","name":"Juegos Tradicionales","x":45.0,"y":75.0,"zone":"Bloque D · Entre Secretaría y el Ingreso","desc":"Sección de juegos tradicionales, actividad de los 40 años cervantinos, ubicada entre Secretaría y el Ingreso (Salida de Emergencia) del Bloque D.","type":"juegos"},
 {"id":"13","name":"Primera Infancia · Información","x":54.0,"y":36.0,"zone":"Frente al Auditorio","desc":"Punto de información sobre Primera Infancia, ubicado frente al Auditorio.","type":"infancia"},
